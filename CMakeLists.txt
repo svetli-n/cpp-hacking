@@ -1,24 +1,16 @@
 cmake_minimum_required(VERSION 3.10)
-project(CSVReader VERSION 1.0)
+project(cplusplushacking)
 
-# Set C++ standard
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Add compiler warnings
-if(MSVC)
-    add_compile_options(/W4)
-else()
-    add_compile_options(-Wall -Wextra -pedantic)
-endif()
+# Find Catch2
+find_package(Catch2 3 REQUIRED)
 
-# Create the executable
-add_executable(csv_reader
-    main.cpp
-    CSVReader.cpp
-)
+# Build main executable
+add_executable(main main.cpp)
 
-# Include directories
-target_include_directories(csv_reader PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+# Build test executable with Catch2
+add_executable(test_smart_ptr test_smart_ptr.cpp)
 
-
+# Link Catch2WithMain to test executable (provides main function)
+target_link_libraries(test_smart_ptr Catch2::Catch2WithMain)

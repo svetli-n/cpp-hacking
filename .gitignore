@@ -12,7 +12,7 @@ cmake-build-*/
 *.lib
 
 # Executables
-csv_reader
+main
 *.exe
 *.out
 *.app
@@ -33,4 +33,3 @@ Makefile
 
 # Debug files
 *.dSYM/
-
